@@ -245,7 +245,6 @@ private fun SnakeBoard(
     state: SnakeState,
     onSwipe: (Direction) -> Unit,
 ) {
-    var dragAccum by remember { mutableStateOf(Offset.Zero) }
     val outline = MaterialTheme.colorScheme.outline
 
     Canvas(
@@ -253,6 +252,7 @@ private fun SnakeBoard(
             Modifier
                 .fillMaxSize()
                 .pointerInput(Unit) {
+                    var dragAccum = Offset.Zero
                     detectDragGestures(
                         onDrag = { change, dragAmount ->
                             change.consume()
